@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.button{
+  height: 50px;
+  width: 250px;
+  background-color: rgb(196, 225, 213);
+  border-radius: 10px;
+}
+
+
