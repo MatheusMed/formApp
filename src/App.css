@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
 }
 .container{
   display: flex;
@@ -10,6 +11,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+ 
 }
 
 .button{
