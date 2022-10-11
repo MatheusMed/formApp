@@ -6,7 +6,7 @@ type Props = {
 function ButtonComponent({ handleTap }: Props) {
 
   return (
-    <button className='button' onClick={handleTap}> Fazer Login </button>
+    <button className='button' onClick={handleTap}> Salvar Usuario </button>
   );
 
 }

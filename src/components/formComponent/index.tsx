@@ -1,36 +1,58 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useContext } from 'react';
+import { Context } from '../../store/contexts/contextProvider';
 import ButtonComponent from '../buttonComponent';
 import InputComponent from '../input_component';
+import { actions } from '../../store/reducers/userReducer';
 
 
 function FormComponent() {
+  const { state, dispatch } = useContext(Context);
 
-  const [name, setName] = useState('')
-  const [sobreNome, setSobreNome] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState(state.user.name)
+
+  const [lastName, setLastName] = useState(state.user.lastName)
+
+  const [age, setAge] = useState(state.user.age)
 
 
   function handleName(e: ChangeEvent<HTMLInputElement>) {
     setName(e.target.value);
   }
-  function handlePassword(e: ChangeEvent<HTMLInputElement>) {
-    setPassword(e.target.value);
+  function handleAge(e: ChangeEvent<HTMLInputElement>) {
+    setAge(parseInt(e.target.value));
   }
   function handleSobreName(e: ChangeEvent<HTMLInputElement>) {
-    setSobreNome(e.target.value);
+    setLastName(e.target.value);
   }
 
   function handleSave() {
-    if (name && sobreNome != '')
-      alert(`Nome: ${name} ${sobreNome}`);
+    dispatch({
+      type: actions.CHANGE_NAME,
+      payload: {
+        name
+      }
+    });
+    dispatch({
+      type: actions.CHANGE_LASTNAME,
+      payload: {
+        lastName
+      }
+    });
+    dispatch({
+      type: actions.CHANGE_AGE,
+      payload: {
+        age
+      }
+    });
+
+
+    setAge(0);
+    setLastName('')
     setName('')
-    setPassword('')
-    setSobreNome('')
 
   }
 
   return (
-    console.log("caiu aq "),
     <>
       <InputComponent
         type='text'
@@ -43,16 +65,15 @@ function FormComponent() {
         type='text'
         onHandle={handleSobreName}
         placeHolder="Digite seu sobreNome"
-        valueState={sobreNome}
+        valueState={lastName}
       />
 
       <InputComponent
-        type='password'
-        placeHolder='Digite sua senha'
-        onHandle={handlePassword}
-        valueState={password}
+        type='text'
+        placeHolder='Digite sua idade'
+        onHandle={handleAge}
+        valueState={age}
       />
-
 
       <ButtonComponent handleTap={handleSave} />
     </>

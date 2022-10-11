@@ -4,7 +4,7 @@ type Props = {
   type?: string;
   placeHolder?: string;
   onHandle?: React.ChangeEventHandler<HTMLInputElement>;
-  valueState?: string;
+  valueState?: any;
 }
 
 
